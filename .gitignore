@@ -1,0 +1,51 @@
+# dependencies
+node_modules
+
+# yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# eslint
+.eslintcache
+
+# misc
+.DS_Store
+
+# IDE
+.vscode
+.idea
+
+# cli
+dist
+
+# Local credentials and environment overrides (publish templates only)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.keystore
+keystore/
+keystores/
+.secrets/
+secrets/
+wallet-backup*
+mnemonic.txt
+seed-phrase.txt
+
+# Machine-local state and build output
+.cache/
+.tools/
+.vercel/
+*.log
+*.tsbuildinfo
+**/deployments/
+
+# Internal development handoff; public setup is in ONETHANKS.zh-CN.md
+/NOTES.md
