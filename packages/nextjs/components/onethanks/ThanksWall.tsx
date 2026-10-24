@@ -60,7 +60,8 @@ function AuthorWall({ author }: { author: GithubUser }) {
   const { data: blockNumber } = useBlockNumber({ chainId, watch: true });
   const { data: block } = useBlock({ chainId, blockNumber });
   useEffect(() => {
-    if (page.data) setIds(previous => [...new Set([...previous, ...page.data])]);
+    const incomingIds = page.data;
+    if (incomingIds) setIds(previous => [...new Set([...previous, ...incomingIds])]);
   }, [page.data]);
   const canClaim = !!address && walletChain === chainId;
   return (

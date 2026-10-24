@@ -1,0 +1,20 @@
+# Secrets must enter Vercel through encrypted environment settings only.
+.git/
+.secrets/
+.yarn/install-state.gz
+.yarn/cache/
+.yarn/unplugged/
+**/.env
+**/.env.*
+!**/.env.example
+**/node_modules/
+**/.next/
+**/.vercel/
+**/deployments/
+**/artifacts/
+**/cache/
+**/generated/
+**/temp/
+**/*.tsbuildinfo
+**/*.log
+NOTES.md

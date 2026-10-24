@@ -4,7 +4,9 @@
 
 这是依赖后端签名者的测试网 demo。签名者可授权领取，不是无信任身份验证。没有自动 GitHub 通知、自动退款、数据库或 OAuth。
 
-当前交付为本地版本：39 项测试通过，生产构建通过，浏览器已验证真实本地寄出、生成声明和退款。真实账号 Gist 成功领取与 Sepolia/公网验收按用户选择留待后续。
+网站：<https://onethanks.vercel.app/>，运行于 Ethereum Sepolia（chain ID 11155111）。合约地址：`0x4fddbbe651da583fe815e99e3cb1bc4d732b7e87`，退款窗口为 30 分钟。
+
+39 项测试通过，浏览器已验证真实本地寄出、生成声明和退款。真实账号 Gist 成功领取仍需账号本人发布声明完成端到端验收。
 
 ## 本地启动
 
@@ -63,7 +65,7 @@ Smoke 脚本只允许本地 31337，会发送明确标注为本地验收的卡�
 2. 在 `packages/hardhat/.env` 配置 `SEPOLIA_RPC_URL` 和 `ONETHANKS_SIGNER_ADDRESS`。后者必须与网站的 `SIGNER_PRIVATE_KEY` 对应，且不同于部署账户。部署脚本拒绝公开 Hardhat 测试账户。
 3. 运行 `.\dev.cmd deploy --network sepolia --tags OneThanks`，按仓库流程输入本地解密密码。部署记录和前端 ABI 自动生成。
 4. 网站环境设 `NEXT_PUBLIC_ONETHANKS_CHAIN_ID=11155111`，配置浏览器 RPC、服务端 `ONETHANKS_RPC_URL`、`SIGNER_PRIVATE_KEY`、至少 32 字符的随机 `CLAIM_HMAC_SECRET`。可选 `GITHUB_TOKEN` 用于提高公开读取额度。私钥、HMAC、token 绝不能使用 `NEXT_PUBLIC_` 前缀。
-5. 用 `.\dev.cmd vercel:login` 登录有效 Vercel 账户。在 Vercel 选择本仓库、Root Directory `packages/nextjs`，保留 monorepo 根依赖访问，添加上述环境变量。运行 `.\dev.cmd vercel --prod` 发布。不要使用忽略构建错误的 yolo 命令。
+5. 用 `.\dev.cmd vercel:login` 登录有效 Vercel 账户。在 Vercel 选择本仓库、Root Directory `packages/nextjs`，开启根目录外源码访问，使用 Node.js 22.x。添加上述环境变量和 `ENABLE_EXPERIMENTAL_COREPACK=1`、`YARN_IGNORE_PATH=1`；安装与构建命令由 `packages/nextjs/vercel.json` 指定为 `corepack yarn install --immutable`、`corepack yarn build`。通过 `yarn workspace @se-2/nextjs exec vercel --prod` 发布；从仓库根目录执行时需先绑定同一 Vercel 项目。不要使用忽略构建错误的 yolo 命令。
 6. 托管平台为 `/api/claim/*` 配置按 IP 的请求速率限制（建议起点每分钟 10 次），作者查询接口按流量设置限额。进程缓存不替代分布式限流。部署后检查 RPC chainId、合约 signer 与服务端地址一致。
 7. 在实际 HTTPS 地址用两台设备完成寄出、真实 Gist、领取和退款。提前准备一张已过期卡演示退款；不修改公共测试网时间。
 
@@ -81,4 +83,4 @@ Smoke 脚本只允许本地 31337，会发送明确标注为本地验收的卡�
 
 所有留言永久公开，不渲染 HTML。用户提交的 login 不证明归属，GitHub 数字 ID 才是资金归属依据。所有资金操作为常数复杂度，分页上限 20，终态不可重复转出。后端 HMAC、固定 GitHub API 域名、声明文件大小、超时和 nonce 校验保护核验边界。
 
-已完成合约与 API 的 39 项自动化测试、本地寄出与退款流程、前端生产构建及桌面/手机检查。真实 Gist 成功领取、Sepolia 与公网部署仍待验收。不要将本地测试账户用于公共网络，不要提交实际环境文件、签名私钥、HMAC 密钥或访问令牌。
+已完成合约与 API 的 39 项自动化测试、本地寄出与退款流程、前端生产构建及桌面/手机检查。Sepolia 合约已部署；真实 Gist 成功领取仍待账号本人验收。不要将本地测试账户用于公共网络，不要提交实际环境文件、签名私钥、HMAC 密钥或访问令牌。`.vercelignore` 同样排除本地密钥和环境文件；运行时敏感配置只通过托管平台环境设置注入。

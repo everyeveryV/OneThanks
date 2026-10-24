@@ -1,8 +1,10 @@
 # 一句谢谢 OneThanks
 
-本仓库已实现基于 Scaffold-ETH 2 的本地 OneThanks MVP：给 GitHub 作者寄公开感谢与测试 ETH，通过公开 Gist 逐卡领取，或由原发送者在到期后退款。
+本仓库实现基于 Scaffold-ETH 2 的 OneThanks MVP：给 GitHub 作者寄公开感谢与测试 ETH，通过公开 Gist 逐卡领取，或由原发送者在到期后退款。
 
-本地启动、Gist 验收和后续 Sepolia 部署请看 [中文使用说明](./ONETHANKS.zh-CN.md)。当前交付为本地版本，真实账号 Gist 成功领取与公网验收仍待完成。
+网站：[onethanks.vercel.app](https://onethanks.vercel.app/)。使用 Ethereum Sepolia 测试网；作者有 30 分钟领取，到期后寄出者可手动退款。
+
+合约：[0x4fddbbe651da583fe815e99e3cb1bc4d732b7e87](https://sepolia.etherscan.io/address/0x4fddbbe651da583fe815e99e3cb1bc4d732b7e87)。本地启动、Gist 验收与部署配置请看 [中文使用说明](./ONETHANKS.zh-CN.md)。真实账号 Gist 成功领取的端到端验收仍待完成。
 
 本仓库不包含运行环境密钥。请从 `.env.example` 配置；`.env`、`.env.local`、钱包文件、本地部署记录和构建产物均不应提交。源码中的 Hardhat 固定测试密钥是公开的本地开发账户，不能用于公共网络或存放真实资产。
 
@@ -45,7 +47,7 @@ yarn start
 
 Before you begin, you need to install the following tools:
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
+- [Node (>= v22.10.0)](https://nodejs.org/en/download/)
 - Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
 - [Git](https://git-scm.com/downloads)
 
