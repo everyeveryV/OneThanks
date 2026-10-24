@@ -1,5 +1,7 @@
 # 一句谢谢 OneThanks
 
+🎬 [观看项目介绍视频](./docs/media/onethanks.mp4) · [下载 MP4](https://github.com/everyeveryV/OneThanks/raw/refs/heads/main/docs/media/onethanks.mp4)
+
 本仓库实现基于 Scaffold-ETH 2 的 OneThanks MVP：给 GitHub 作者寄公开感谢与测试 ETH，通过公开 Gist 逐卡领取，或由原发送者在到期后退款。
 
 网站：[onethanks.vercel.app](https://onethanks.vercel.app/)。使用 Ethereum Sepolia 测试网；作者有 30 分钟领取，到期后寄出者可手动退款。

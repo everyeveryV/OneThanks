@@ -18,3 +18,5 @@
 **/*.tsbuildinfo
 **/*.log
 NOTES.md
+# Repository demo media is linked from GitHub, not served by the app.
+docs/media/
